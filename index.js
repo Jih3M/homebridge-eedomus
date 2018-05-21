@@ -2,7 +2,7 @@ var Service, Characteristic;
 var request = require("request");
 var fs, credentials;
 
-eedomus_config = '/home/pi/.homebridge/config.json';
+eedomus_config = '/homebridge/config.json';
 fs = require('fs');
 
 var configuration = JSON.parse(fs.readFileSync(eedomus_config));
@@ -274,7 +274,7 @@ console.log(this.urlperc.replace("%b", level))
 
       return [lightbulbService];
     } else if (this.service == "TemperatureSensor") {
-      var temperatureSensorService = new Service.TemperatureSensor("Sensor de Temperatura");
+      var temperatureSensorService = new Service.TemperatureSensor(this.name);
 
       temperatureSensorService
       .getCharacteristic(Characteristic.CurrentTemperature)
